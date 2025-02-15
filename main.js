@@ -1,28 +1,28 @@
 const questionContainer = document.querySelector(".question-container");
-const resultContainer = document.querySelector(".result-container");
+const resultContainer = document.querySelector(".result-container.yes");
 const gifResult = document.querySelector(".gif-result");
 const heartLoader = document.querySelector(".cssload-main");
 const yesBtn = document.querySelector(".js-yes-btn");
 const noBtn = document.querySelector(".js-no-btn");
 
-// No butonu rastgele hareket ettirme
+// /change the postion of no button
 noBtn.addEventListener("mouseover", () => {
-  const newX = Math.floor(Math.random() * (window.innerWidth - noBtn.offsetWidth));
-  const newY = Math.floor(Math.random() * (window.innerHeight - noBtn.offsetHeight));
+  const newX = Math.floor(Math.random() * questionContainer.offsetWidth);
+  const newY = Math.floor(Math.random() * questionContainer.offsetWidth);
 
-  noBtn.style.position = "absolute";
   noBtn.style.left = `${newX}px`;
   noBtn.style.top = `${newY}px`;
 });
 
-// Yes butonu tıklandığında animasyonu başlat
+// yes button functionality
+
 yesBtn.addEventListener("click", () => {
   questionContainer.style.display = "none";
-  heartLoader.style.display = "block";
+  heartLoader.style.display = "inherit";
 
-  setTimeout(() => {
+  const timeoutId = setTimeout(() => {
     heartLoader.style.display = "none";
-    resultContainer.style.display = "block";
+    resultContainer.style.display = "inherit";
     gifResult.play();
   }, 3000);
 });
